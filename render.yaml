@@ -1,14 +1,12 @@
 services:
   - type: web
     name: tarea-laravel
-    runtime: php
+    env: docker
     plan: free
     region: oregon
-    buildCommand: |
-      composer install
-      php artisan migrate --force
-      php artisan config:cache
-    startCommand: php artisan serve --host=0.0.0.0 --port=10000
+    dockerfilePath: ./Dockerfile
+    buildCommand: ""
+    startCommand: ""
     envVars:
       - key: APP_ENV
         value: production
@@ -23,6 +21,6 @@ services:
       - key: DB_DATABASE
         value: laravel_db_skm0
       - key: DB_USERNAME
-        value: laravel_db_skm0_userusuario
+        value: laravel_db_skm0_user
       - key: DB_PASSWORD
         value: a2Hq2BKJkcm5HNsoScoQVI7pRvHbnfuI
