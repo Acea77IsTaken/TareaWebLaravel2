@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: tarea-laravel
+    runtime: php
+    plan: free
+    region: oregon
+    buildCommand: |
+      composer install
+      php artisan migrate --force
+      php artisan config:cache
+    startCommand: php artisan serve --host=0.0.0.0 --port=10000
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        generateValue: true
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        value: dpg-d0pv07be5dus73e7mikg-a
+      - key: DB_PORT
+        value: 5432
+      - key: DB_DATABASE
+        value: laravel_db_skm0
+      - key: DB_USERNAME
+        value: laravel_db_skm0_userusuario
+      - key: DB_PASSWORD
+        value: a2Hq2BKJkcm5HNsoScoQVI7pRvHbnfuI
